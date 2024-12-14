@@ -18,7 +18,11 @@ namespace NewCalculator.Controllers
         }
 
         [HttpGet("api/v2/{city}")]
-        public async Task<ActionResult<WeatherApiRequest>> GetWeatherTemperatureByCity(string city)
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+
+        public async Task<ActionResult<WeatherApiResponse>> GetWeatherTemperatureByCity(string city)
         {
             if (string.IsNullOrWhiteSpace(city))
             {
@@ -27,12 +31,12 @@ namespace NewCalculator.Controllers
 
             var temperatureInfo = await _weatherService.GetWeatherTemperatureByCityAsync(city);
 
-            if (temperatureInfo != null)
+            if (temperatureInfo == null)
             {
-                return Ok(temperatureInfo);
+                return NotFound($"Weather temperature not found for city: {city}");
             }
 
-            return NotFound($"Weather temperature not found for city: {city}");
+            return Ok(temperatureInfo);
         }
     }
 }

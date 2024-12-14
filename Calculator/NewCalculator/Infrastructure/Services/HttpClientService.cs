@@ -5,10 +5,12 @@ namespace NewCalculator.Infrastructure.Services
     public class HttpClientService : IHttpClientService
     {
         private readonly HttpClient _httpClient;
+        private readonly ILogger _logger;
 
-        public HttpClientService(HttpClient httpClient)
+        public HttpClientService(HttpClient httpClient, ILogger logger)
         {
             _httpClient = httpClient;
+            _logger = logger;
         }
 
         public async Task<string> GetAsync(string url)
@@ -21,8 +23,8 @@ namespace NewCalculator.Infrastructure.Services
             }
             catch (HttpRequestException ex)
             {
-                //TODO: Log detailed exception info
-                throw new HttpRequestException($"HTTP request error: {ex.Message}");
+                _logger.LogError(ex, "HTTP request failed for URL: {Url}", url);
+                throw; // Let the caller handle the exception
             }
         }
     }

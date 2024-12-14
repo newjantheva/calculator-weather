@@ -18,6 +18,9 @@ namespace NewCalculator.Controllers
         }
 
         [HttpPost("api/v1/divide")]
+        [ProducesResponseType<CalculationResult>(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult DivideNumbers([FromBody] DivisionRequest request)
         {
 
@@ -42,6 +45,9 @@ namespace NewCalculator.Controllers
 
         // Version 2: Allow between 2 and 5 numbers
         [HttpPost("api/v2/add")]
+        [ProducesResponseType<CalculationResult>(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult AddMultipleNumbers([FromBody] MultiNumberAdditionRequest request)
         {
             try
@@ -63,6 +69,8 @@ namespace NewCalculator.Controllers
 
         // Version 1: Add two numbers
         [HttpPost("api/v1/add")]
+        [ProducesResponseType<CalculationResult>(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult AddNumbers([FromBody] AdditionRequest request)
         {
             try

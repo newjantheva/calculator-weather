@@ -9,11 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "CalculatorTests\Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewCalculator", "NewCalculator\NewCalculator.csproj", "{0F96CC5C-7CCE-445A-AC99-456FAEBEBB89}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{632733BE-E3FF-4212-B9A7-8042DB42182A}"
-	ProjectSection(SolutionItems) = preProject
-		ReadMe.md = ReadMe.md
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{57CE2D8B-39DC-4090-A6EE-56E2960C8603}"
 EndProject
 Global
@@ -40,6 +35,5 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1C03922B-22AF-4395-9173-FD50493289BD} = {57CE2D8B-39DC-4090-A6EE-56E2960C8603}
-		{632733BE-E3FF-4212-B9A7-8042DB42182A} = {57CE2D8B-39DC-4090-A6EE-56E2960C8603}
 	EndGlobalSection
 EndGlobal
